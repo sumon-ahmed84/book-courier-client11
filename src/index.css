@@ -1,2 +1,6 @@
 @import 'tailwindcss';
 @plugin "daisyui";
+
+  a.active{
+  @apply  font-semibold text-green-800;
+}
