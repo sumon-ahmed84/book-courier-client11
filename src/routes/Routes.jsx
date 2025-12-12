@@ -14,7 +14,7 @@ import MyInventory from '../pages/Dashboard/Seller/MyInventory'
 import ManageOrders from '../pages/Dashboard/Seller/ManageOrders'
 import MyOrders from '../pages/Dashboard/Customer/MyOrders'
 import { createBrowserRouter } from 'react-router'
-import Books from '../pages/Books/Books'
+import Books from '../pages/AllBooks/AllBooks'
 
 export const router = createBrowserRouter([
   {
@@ -27,7 +27,7 @@ export const router = createBrowserRouter([
         element: <Home />,
       },
       {
-        path:'/books',
+        path:'/allbooks',
         element:<Books></Books>
       },
       {

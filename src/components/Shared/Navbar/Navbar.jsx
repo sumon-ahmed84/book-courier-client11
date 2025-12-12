@@ -41,7 +41,7 @@ const Navbar = () => {
                   </NavLink>
                 </li>
                 <li>
-                  <NavLink to={"/books"}>Books</NavLink>
+                  <NavLink to={"/allbooks"}>All Books</NavLink>
                 </li>
 
                 <li>
@@ -83,10 +83,10 @@ const Navbar = () => {
                     </NavLink>
 
                     <NavLink
-                      to={"/books"}
+                      to={"/allbooks"}
                       className="block md:hidden px-4 py-3 hover:bg-neutral-100 transition font-semibold"
                     >
-                      Books
+                     All Books
                     </NavLink>
                     {user ? (
                       <>
