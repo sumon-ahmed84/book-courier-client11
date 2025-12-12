@@ -3,7 +3,7 @@ import { AiOutlineMenu } from "react-icons/ai";
 import { GoHomeFill } from "react-icons/go";
 import { ImBoxAdd } from "react-icons/im";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, NavLink } from "react-router";
 import useAuth from "../../../hooks/useAuth";
 import avatarImg from "../../../assets/images/placeholder.jpg";
@@ -12,17 +12,28 @@ const Navbar = () => {
   const { user, logOut } = useAuth();
   const [isOpen, setIsOpen] = useState(false);
 
+  const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
+
+  useEffect(() => {
+    const html = document.querySelector("html");
+    html.setAttribute("data-theme", theme);
+    localStorage.setItem("theme", theme);
+  }, [theme]);
+
+  const handleTheme = (checked) => {
+    setTheme(checked ? "dark" : "light");
+  };
   return (
-    <div className="fixed w-full bg-white z-10 shadow-sm">
+    <div className={`fixed w-full bg-white z-10 shadow-sm ${theme === 'dark' ? 'text-black' : ''}`}>
       <div className=" ">
         <Container>
           <div className="flex flex-row  items-center justify-between gap-3 md:gap-0">
             {/* Logo */}
             <Link to="/">
-              <img src={logo}  alt="logo" width="70"  />
+              <img src={logo} alt="logo" width="70" />
             </Link>
-            <div className="navbar-center hidden md:flex">
-              <ul className="menu menu-horizontal px-1 gap-10">
+            <div className="navbar-center hidden md:flex ">
+              <ul className="menu menu-horizontal px-1 gap-10 dark:text-green-400 ">
                 <li>
                   <NavLink to={"/"}>
                     <GoHomeFill />
@@ -30,15 +41,12 @@ const Navbar = () => {
                   </NavLink>
                 </li>
                 <li>
-                  <NavLink to={"/books"}>
-                    Books
-                  </NavLink>
+                  <NavLink to={"/books"}>Books</NavLink>
                 </li>
-                
+
                 <li>
                   <NavLink to={"/dashboard"}>Dashboard</NavLink>
                 </li>
-                
               </ul>
             </div>
 
@@ -73,10 +81,13 @@ const Navbar = () => {
                     >
                       Home
                     </NavLink>
-                
-                  <NavLink to={"/books"} className="block md:hidden px-4 py-3 hover:bg-neutral-100 transition font-semibold">
-                     Books
-                  </NavLink>
+
+                    <NavLink
+                      to={"/books"}
+                      className="block md:hidden px-4 py-3 hover:bg-neutral-100 transition font-semibold"
+                    >
+                      Books
+                    </NavLink>
                     {user ? (
                       <>
                         <Link
@@ -85,6 +96,16 @@ const Navbar = () => {
                         >
                           Dashboard
                         </Link>
+
+                        <input
+                          onChange={(e) => handleTheme(e.target.checked)}
+                          type="checkbox"
+                          defaultChecked={
+                            localStorage.getItem("theme") === "dark"
+                          }
+                          className="toggle mx-3"
+                        />
+
                         <div
                           onClick={logOut}
                           className="px-4 py-3 hover:bg-neutral-100 transition font-semibold cursor-pointer"
