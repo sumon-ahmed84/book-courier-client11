@@ -19,7 +19,7 @@ const AddPlantForm = () => {
     reset: mutationReset,
   } = useMutation({
     mutationFn: async payload =>
-      await axios.post(`${import.meta.env.VITE_API_URI}/books`, payload),
+      await axios.post(`${import.meta.env.VITE_API_URL}/books`, payload),
     onSuccess: data => {
       console.log(data)
       // show toast
