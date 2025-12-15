@@ -12,7 +12,7 @@ const CustomerOrderDataRow = () => {
             <div className='block relative'>
               <img
                 alt='profile'
-                src='https://i.ibb.co.com/rMHmQP2/money-plant-in-feng-shui-brings-luck.jpg'
+                src='https://i.ibb.co.com/rMHmQP2/money-book-in-feng-shui-brings-luck.jpg'
                 className='mx-auto object-cover rounded h-10 w-15 '
               />
             </div>
@@ -21,7 +21,7 @@ const CustomerOrderDataRow = () => {
       </td>
 
       <td className='px-5 py-5 border-b border-gray-200 bg-white text-sm'>
-        <p className='text-gray-900'>Money Plant</p>
+        <p className='text-gray-900'>Money Book</p>
       </td>
       <td className='px-5 py-5 border-b border-gray-200 bg-white text-sm'>
         <p className='text-gray-900'>Indoor</p>

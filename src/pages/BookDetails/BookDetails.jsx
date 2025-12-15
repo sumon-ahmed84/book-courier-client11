@@ -8,19 +8,19 @@ import { useQuery } from '@tanstack/react-query'
 import axios from 'axios'
 import LoadingSpinner from '../../components/Shared/LoadingSpinner'
 
-const PlantDetails = () => {
+const BookDetails = () => {
   let [isOpen, setIsOpen] = useState(false)
   const { id } = useParams()
 
-  const { data: plant = {}, isLoading } = useQuery({
-    queryKey: ['plant', id],
+  const { data: book = {}, isLoading } = useQuery({
+    queryKey: ['book', id],
     queryFn: async () => {
   try {
     const result = await axios(`${import.meta.env.VITE_API_URL}/books/${id}`);
     console.log('API result:', result.data);
     return result.data;
   } catch (err) {
-    console.error('Error fetching plant:', err);
+    console.error('Error fetching book:', err);
     return {};
   }
 }
@@ -31,8 +31,8 @@ const PlantDetails = () => {
     setIsOpen(false)
   }
   if (isLoading) return <LoadingSpinner />
-  const { image, name, description, category, quantity, price, seller } = plant
-  console.log(plant);
+  const { image, name, description, category, quantity, price, seller } = book
+  console.log(book);
   
   return (
     <Container>
@@ -50,7 +50,7 @@ const PlantDetails = () => {
           </div>
         </div>
         <div className='md:gap-10 flex-1'>
-          {/* Plant Info */}
+          {/* Book Info */}
           <Heading title={name} subtitle={`Category: ${category}`} />
           <hr className='my-6' />
           <div
@@ -103,7 +103,7 @@ const PlantDetails = () => {
           </div>
           <hr className='my-6' />
           <PurchaseModal
-            plant={plant}
+            book={book}
             closeModal={closeModal}
             isOpen={isOpen}
           />
@@ -113,7 +113,7 @@ const PlantDetails = () => {
   )
 }
 
-export default PlantDetails
+export default BookDetails
 
 
 

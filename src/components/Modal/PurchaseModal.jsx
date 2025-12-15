@@ -2,13 +2,13 @@ import { Dialog, DialogPanel, DialogTitle } from '@headlessui/react'
 import useAuth from '../../hooks/useAuth'
 import axios from 'axios'
 
-const PurchaseModal = ({ closeModal, isOpen, plant }) => {
+const PurchaseModal = ({ closeModal, isOpen, book }) => {
   const { user } = useAuth()
-  const { _id, name, category, price, description, image, seller } = plant || {}
+  const { _id, name, category, price, description, image, seller } = book || {}
 
   const handlePayment = async () => {
     const paymentInfo = {
-      plantId: _id,
+      bookId: _id,
       name,
       category,
       price,
@@ -49,7 +49,7 @@ const PurchaseModal = ({ closeModal, isOpen, plant }) => {
               Review Info Before Purchase
             </DialogTitle>
             <div className='mt-2'>
-              <p className='text-sm text-gray-500'>Plant: {name}</p>
+              <p className='text-sm text-gray-500'>Book: {name}</p>
             </div>
             <div className='mt-2'>
               <p className='text-sm text-gray-500'>Category: {category}</p>

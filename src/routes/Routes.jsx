@@ -2,10 +2,10 @@ import Home from '../pages/Home/Home'
 import ErrorPage from '../pages/ErrorPage'
 import Login from '../pages/Login/Login'
 import SignUp from '../pages/SignUp/SignUp'
-import PlantDetails from '../pages/PlantDetails/PlantDetails'
+import BookDetails from '../pages/BookDetails/BookDetails'
 import PrivateRoute from './PrivateRoute'
 import DashboardLayout from '../layouts/DashboardLayout'
-import AddPlant from '../pages/Dashboard/Seller/AddPlant'
+import AddBook from '../pages/Dashboard/Seller/AddBook'
 import ManageUsers from '../pages/Dashboard/Admin/ManageUsers'
 import Profile from '../pages/Dashboard/Common/Profile'
 import Statistics from '../pages/Dashboard/Common/Statistics'
@@ -31,8 +31,8 @@ export const router = createBrowserRouter([
         element:<Books></Books>
       },
       {
-        path: '/plant/:id',
-        element: <PlantDetails />,
+        path: '/book/:id',
+        element: <BookDetails />,
       },
     ],
   },
@@ -55,10 +55,10 @@ export const router = createBrowserRouter([
         ),
       },
       {
-        path: 'add-plant',
+        path: 'add-book',
         element: (
           <PrivateRoute>
-            <AddPlant />
+            <AddBook />
           </PrivateRoute>
         ),
       },

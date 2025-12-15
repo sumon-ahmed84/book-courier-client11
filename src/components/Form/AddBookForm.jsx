@@ -8,7 +8,7 @@ import ErrorPage from '../../pages/ErrorPage'
 import toast from 'react-hot-toast'
 import { TbFidgetSpinner } from 'react-icons/tb'
 
-const AddPlantForm = () => {
+const AddBookForm = () => {
   const { user } = useAuth()
 
   // useMutation hook useCase (POST || PUT || PATCH || DELETE)
@@ -23,7 +23,7 @@ const AddPlantForm = () => {
     onSuccess: data => {
       console.log(data)
       // show toast
-      toast.success('Plant Added successfully')
+      toast.success('Book Added successfully')
       // navigate to my inventory page
       mutationReset()
       // Query key invalidate
@@ -55,7 +55,7 @@ const AddPlantForm = () => {
 
     try {
       const imageUrl = await imageUpload(imageFile)
-      const plantData = {
+      const bookData = {
         image: imageUrl,
         name,
         description,
@@ -68,8 +68,8 @@ const AddPlantForm = () => {
           email: user?.email,
         },
       }
-      // await axios.post(`${import.meta.env.VITE_API_URL}/plants`, plantData),
-      await mutateAsync(plantData)
+      // await axios.post(`${import.meta.env.VITE_API_URL}/books`, bookData),
+      await mutateAsync(bookData)
       reset()
     } catch (err) {
       console.log(err)
@@ -92,7 +92,7 @@ const AddPlantForm = () => {
                 className='w-full px-4 py-3 text-gray-800 border border-lime-300 focus:outline-lime-500 rounded-md bg-white'
                 id='name'
                 type='text'
-                placeholder='Plant Name'
+                placeholder='Book Name'
                 {...register('name', {
                   required: 'Name is required',
                   maxLength: {
@@ -119,10 +119,10 @@ const AddPlantForm = () => {
                 name='category'
                 {...register('category', { required: 'Category is required' })}
               >
-                <option value='Indoor'>Indoor</option>
-                <option value='Outdoor'>Outdoor</option>
-                <option value='Succulent'>Succulent</option>
-                <option value='Flowering'>Flowering</option>
+                <option value='Indoor'>Engineering</option>
+                <option value='Outdoor'>Cyber Security</option>
+                <option value='Succulent'>Mathematics</option>
+                <option value='Flowering'>Business & Management</option>
               </select>
               {errors.category && (
                 <p className='text-xs text-red-500 mt-1'>
@@ -138,7 +138,7 @@ const AddPlantForm = () => {
 
               <textarea
                 id='description'
-                placeholder='Write plant description here...'
+                placeholder='Write book description here...'
                 className='block rounded-md focus:lime-300 w-full h-32 px-4 py-3 text-gray-800  border border-lime-300 bg-white focus:outline-lime-500 '
                 name='description'
                 {...register('description', {
@@ -246,4 +246,4 @@ const AddPlantForm = () => {
   )
 }
 
-export default AddPlantForm
+export default AddBookForm

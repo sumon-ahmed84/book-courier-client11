@@ -1,4 +1,4 @@
-import PlantDataRow from '../../../components/Dashboard/TableRows/PlantDataRow'
+import BookDataRow from '../../../components/Dashboard/TableRows/BookDataRow'
 
 const MyInventory = () => {
   return (
@@ -56,7 +56,7 @@ const MyInventory = () => {
                   </tr>
                 </thead>
                 <tbody>
-                  <PlantDataRow />
+                  <BookDataRow />
                 </tbody>
               </table>
             </div>

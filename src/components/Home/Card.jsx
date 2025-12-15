@@ -1,10 +1,10 @@
 import { Link } from 'react-router'
 
-const Card = ({ plant }) => {
-  const { _id, name, image, quantity, price, category } = plant || {}
+const Card = ({ book }) => {
+  const { _id, name, image, quantity, price, category } = book || {}
   return (
     <Link
-      to={`/plant/${_id}`}
+      to={`/book/${_id}`}
       className='col-span-1 cursor-pointer group shadow-xl p-3 rounded-xl'
     >
       <div className='flex flex-col gap-2 w-full'>
@@ -26,7 +26,7 @@ const Card = ({ plant }) => {
                 transition
               '
             src={image}
-            alt='Plant Image'
+            alt='Book Image'
           />
           <div
             className='

@@ -1,13 +1,13 @@
 import React from "react";
 import Container from "../../components/Shared/Container";
-import Plants from "../../components/Home/Plants";
+import Books from "../../components/Home/Books";
 
 const AllBooks = () => {
   return (
     <Container>
       <div>
         <p className="font-bold text-center text-3xl">All Books</p>
-        <Plants></Plants>
+        <Books></Books>
         </div>
     </Container>
   );
