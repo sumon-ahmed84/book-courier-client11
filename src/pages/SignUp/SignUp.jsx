@@ -4,7 +4,7 @@ import useAuth from '../../hooks/useAuth'
 import { toast } from 'react-hot-toast'
 import { TbFidgetSpinner } from 'react-icons/tb'
 import { useForm } from 'react-hook-form'
-import { imageUpload } from '../../utils'
+import { imageUpload, saveOrUpdateUser } from '../../utils'
 
 const SignUp = () => {
   const { createUser, updateUserProfile, signInWithGoogle, loading } = useAuth()
@@ -37,6 +37,8 @@ const SignUp = () => {
 
       //1. User Registration
       const result = await createUser(email, password)
+
+      await saveOrUpdateUser({ name, email, image: imageURL })
 
       // 2. Generate image url from selected file
 
