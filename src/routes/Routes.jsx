@@ -15,6 +15,7 @@ import ManageOrders from '../pages/Dashboard/Seller/ManageOrders'
 import MyOrders from '../pages/Dashboard/Customer/MyOrders'
 import { createBrowserRouter } from 'react-router'
 import Books from '../pages/AllBooks/AllBooks'
+import PaymentSuccess from '../pages/Payment/PaymentSuccess'
 
 export const router = createBrowserRouter([
   {
@@ -33,6 +34,10 @@ export const router = createBrowserRouter([
       {
         path: '/book/:id',
         element: <BookDetails />,
+      },
+      {
+        path: '/payment-success',
+        element: <PaymentSuccess />,
       },
     ],
   },

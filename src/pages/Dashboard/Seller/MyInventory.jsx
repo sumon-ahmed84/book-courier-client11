@@ -1,6 +1,22 @@
+import { useQuery } from '@tanstack/react-query'
 import BookDataRow from '../../../components/Dashboard/TableRows/BookDataRow'
+import useAuth from '../../../hooks/useAuth'
+import axios from 'axios'
+import LoadingSpinner from '../../../components/Shared/LoadingSpinner'
 
 const MyInventory = () => {
+  const { user } = useAuth()
+  const { data: books = [], isLoading } = useQuery({
+    queryKey: ['inventory', user?.email],
+    queryFn: async () => {
+      const result = await axios(
+        `${import.meta.env.VITE_API_URL}/my-inventory/${user?.email}`
+      )
+      return result.data
+    },
+  })
+
+  if (isLoading) return <LoadingSpinner />
   return (
     <>
       <div className='container mx-auto px-4 sm:px-8'>
@@ -56,7 +72,9 @@ const MyInventory = () => {
                   </tr>
                 </thead>
                 <tbody>
-                  <BookDataRow />
+                  {books.map(book => (
+                    <BookDataRow key={book._id} book={book} />
+                  ))}
                 </tbody>
               </table>
             </div>
