@@ -17,6 +17,7 @@ import { createBrowserRouter } from 'react-router'
 import Books from '../pages/AllBooks/AllBooks'
 import PaymentSuccess from '../pages/Payment/PaymentSuccess'
 import SellerRequests from '../pages/Dashboard/Admin/SellerRequests'
+import AdminRoute from './AdminRoute'
 
 export const router = createBrowserRouter([
   {
