@@ -18,6 +18,7 @@ import Books from '../pages/AllBooks/AllBooks'
 import PaymentSuccess from '../pages/Payment/PaymentSuccess'
 import SellerRequests from '../pages/Dashboard/Admin/SellerRequests'
 import AdminRoute from './AdminRoute'
+import SellerRoute from './SellerRoute'
 
 export const router = createBrowserRouter([
   {
@@ -65,7 +66,9 @@ export const router = createBrowserRouter([
         path: 'add-book',
         element: (
           <PrivateRoute>
-            <AddBook />
+            <SellerRoute>
+              <AddBook />
+            </SellerRoute>
           </PrivateRoute>
         ),
       },
@@ -73,7 +76,9 @@ export const router = createBrowserRouter([
         path: 'my-inventory',
         element: (
           <PrivateRoute>
-            <MyInventory />
+            <SellerRoute>
+              <MyInventory />
+            </SellerRoute>
           </PrivateRoute>
         ),
       },
@@ -81,7 +86,9 @@ export const router = createBrowserRouter([
         path: 'manage-users',
         element: (
           <PrivateRoute>
-            <ManageUsers />
+            <AdminRoute>
+              <ManageUsers />
+            </AdminRoute>
           </PrivateRoute>
         ),
       },
@@ -113,7 +120,13 @@ export const router = createBrowserRouter([
       },
       {
         path: 'manage-orders',
-        element: <ManageOrders />,
+        element: (
+          <PrivateRoute>
+            <SellerRoute>
+              <ManageOrders />
+            </SellerRoute>
+          </PrivateRoute>
+        ),
       },
     ],
   },
