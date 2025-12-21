@@ -27,12 +27,7 @@ const SignUp = () => {
     // formData.append('image', imageFile)
 
     try {
-      // const { data } = await axios.post(
-      //   `https://api.imgbb.com/1/upload?key=${
-      //     import.meta.env.VITE_IMGBB_API_KEY
-      //   }`,
-      //   formData
-      // )
+      
       const imageURL = await imageUpload(imageFile)
 
       //1. User Registration
@@ -54,34 +49,7 @@ const SignUp = () => {
       toast.error(err?.message)
     }
   }
-  // form submit handler
-  // const handleSubmit = async event => {
-  //   event.preventDefault()
-  //   const form = event.target
-  //   const name = form.name.value
-  //   const email = form.email.value
-  //   const password = form.password.value
-
-  //   try {
-  //     //1. User Registration
-  //     const result = await createUser(email, password)
-
-  //     // 2. Generate image url from selected file
-
-  //     //3. Save username & profile photo
-  //     await updateUserProfile(
-  //       name,
-  //       'https://lh3.googleusercontent.com/a/ACg8ocKUMU3XIX-JSUB80Gj_bYIWfYudpibgdwZE1xqmAGxHASgdvCZZ=s96-c'
-  //     )
-
-  //     navigate(from, { replace: true })
-  //     toast.success('Signup Successful')
-  //   } catch (err) {
-  //     console.log(err)
-  //     toast.error(err?.message)
-  //   }
-  // }
-
+  
   // Handle Google Signin
   const handleGoogleSignIn = async () => {
     try {
@@ -199,6 +167,7 @@ const SignUp = () => {
                 className='w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-lime-500 bg-gray-200 text-gray-900'
                 {...register('password', {
                   required: 'Password is required',
+                  pattern: /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[^A-Za-z0-9]).+$/,
                   minLength: {
                     value: 6,
                     message: 'Password must be at least 6 characters',
