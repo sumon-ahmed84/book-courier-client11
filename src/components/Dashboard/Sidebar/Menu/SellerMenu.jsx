@@ -9,7 +9,7 @@ const SellerMenu = () => {
         label='Add Book'
         address='add-book'
       />
-      <MenuItem icon={MdHomeWork} label='My Inventory' address='my-inventory' />
+      <MenuItem icon={MdHomeWork} label='My Invoice' address='my-inventory' />
       <MenuItem
         icon={MdOutlineManageHistory}
         label='Manage Orders'

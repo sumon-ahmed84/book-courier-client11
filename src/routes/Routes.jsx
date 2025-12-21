@@ -30,7 +30,7 @@ export const router = createBrowserRouter([
       {
         path: "/",
         element: <Home />,
-        loader: () => fetch("http://localhost:5000/latestbook"),
+        loader: () => fetch("https://book-courier-server-one.vercel.app/latestbook"),
       },
       {
         path: "/allbooks",

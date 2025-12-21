@@ -73,7 +73,7 @@ const Home = () => {
     console.log(search_text);
     setLoading(true);
 
-    fetch(`http://localhost:5000/search?search=${search_text}`)
+    fetch(`https://book-courier-server-one.vercel.app/search?search=${search_text}`)
       .then((res) => res.json())
       .then((data) => {
         const results = Array.isArray(data)
