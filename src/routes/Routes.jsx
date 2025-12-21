@@ -1,54 +1,60 @@
-import Home from '../pages/Home/Home'
-import ErrorPage from '../pages/ErrorPage'
-import Login from '../pages/Login/Login'
-import SignUp from '../pages/SignUp/SignUp'
-import BookDetails from '../pages/BookDetails/BookDetails'
-import PrivateRoute from './PrivateRoute'
-import DashboardLayout from '../layouts/DashboardLayout'
-import AddBook from '../pages/Dashboard/Seller/AddBook'
-import ManageUsers from '../pages/Dashboard/Admin/ManageUsers'
-import Profile from '../pages/Dashboard/Common/Profile'
-import Statistics from '../pages/Dashboard/Common/Statistics'
-import MainLayout from '../layouts/MainLayout'
-import MyInventory from '../pages/Dashboard/Seller/MyInventory'
-import ManageOrders from '../pages/Dashboard/Seller/ManageOrders'
-import MyOrders from '../pages/Dashboard/Customer/MyOrders'
-import { createBrowserRouter } from 'react-router'
-import Books from '../pages/AllBooks/AllBooks'
-import PaymentSuccess from '../pages/Payment/PaymentSuccess'
-import SellerRequests from '../pages/Dashboard/Admin/SellerRequests'
-import AdminRoute from './AdminRoute'
-import SellerRoute from './SellerRoute'
+import Home from "../pages/Home/Home";
+import ErrorPage from "../pages/ErrorPage";
+import Login from "../pages/Login/Login";
+import SignUp from "../pages/SignUp/SignUp";
+import BookDetails from "../pages/BookDetails/BookDetails";
+import PrivateRoute from "./PrivateRoute";
+import DashboardLayout from "../layouts/DashboardLayout";
+import AddBook from "../pages/Dashboard/Seller/AddBook";
+import ManageUsers from "../pages/Dashboard/Admin/ManageUsers";
+import Profile from "../pages/Dashboard/Common/Profile";
+import Statistics from "../pages/Dashboard/Common/Statistics";
+import MainLayout from "../layouts/MainLayout";
+import MyInventory from "../pages/Dashboard/Seller/MyInventory";
+import ManageOrders from "../pages/Dashboard/Seller/ManageOrders";
+import MyOrders from "../pages/Dashboard/Customer/MyOrders";
+import { createBrowserRouter } from "react-router";
+import Books from "../pages/AllBooks/AllBooks";
+import PaymentSuccess from "../pages/Payment/PaymentSuccess";
+import SellerRequests from "../pages/Dashboard/Admin/SellerRequests";
+import AdminRoute from "./AdminRoute";
+import SellerRoute from "./SellerRoute";
+import Coverage from "../components/Home/Coverage/Coverage";
 
 export const router = createBrowserRouter([
   {
-    path: '/',
+    path: "/",
     element: <MainLayout />,
     errorElement: <ErrorPage />,
     children: [
       {
-        path: '/',
+        path: "/",
         element: <Home />,
-        loader: ()=> fetch('http://localhost:5000/latestbook'),
+        loader: () => fetch("http://localhost:5000/latestbook"),
       },
       {
-        path:'/allbooks',
-        element:<Books></Books>
+        path: "/allbooks",
+        element: <Books></Books>,
       },
       {
-        path: '/book/:id',
+        path: "/book/:id",
         element: <BookDetails />,
       },
       {
-        path: '/payment-success',
+        path: "/payment-success",
         element: <PaymentSuccess />,
+      },
+     {
+        path: 'coverage',
+        Component: Coverage,
+        loader: () => fetch('/serviceCenters.json').then(res => res.json())
       },
     ],
   },
-  { path: '/login', element: <Login /> },
-  { path: '/signup', element: <SignUp /> },
+  { path: "/login", element: <Login /> },
+  { path: "/signup", element: <SignUp /> },
   {
-    path: '/dashboard',
+    path: "/dashboard",
     element: (
       <PrivateRoute>
         <DashboardLayout />
@@ -64,7 +70,7 @@ export const router = createBrowserRouter([
         ),
       },
       {
-        path: 'add-book',
+        path: "add-book",
         element: (
           <PrivateRoute>
             <SellerRoute>
@@ -74,7 +80,7 @@ export const router = createBrowserRouter([
         ),
       },
       {
-        path: 'my-inventory',
+        path: "my-inventory",
         element: (
           <PrivateRoute>
             <SellerRoute>
@@ -84,7 +90,7 @@ export const router = createBrowserRouter([
         ),
       },
       {
-        path: 'manage-users',
+        path: "manage-users",
         element: (
           <PrivateRoute>
             <AdminRoute>
@@ -94,7 +100,7 @@ export const router = createBrowserRouter([
         ),
       },
       {
-        path: 'seller-requests',
+        path: "seller-requests",
         element: (
           <PrivateRoute>
             <AdminRoute>
@@ -104,7 +110,7 @@ export const router = createBrowserRouter([
         ),
       },
       {
-        path: 'profile',
+        path: "profile",
         element: (
           <PrivateRoute>
             <Profile />
@@ -112,7 +118,7 @@ export const router = createBrowserRouter([
         ),
       },
       {
-        path: 'my-orders',
+        path: "my-orders",
         element: (
           <PrivateRoute>
             <MyOrders />
@@ -120,7 +126,7 @@ export const router = createBrowserRouter([
         ),
       },
       {
-        path: 'manage-orders',
+        path: "manage-orders",
         element: (
           <PrivateRoute>
             <SellerRoute>
@@ -131,4 +137,4 @@ export const router = createBrowserRouter([
       },
     ],
   },
-])
+]);

@@ -14,6 +14,7 @@ import {
   Package,
 } from 'lucide-react';
 import Card from "../../components/Home/Card";
+import Coverage from "../../components/Home/Coverage/Coverage";
 
 const Home = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -320,6 +321,9 @@ const Home = () => {
             </div>
           </div>
         </div>
+      </section>
+      <section>
+        <Coverage></Coverage>
       </section>
 
       {/* Review section */}
