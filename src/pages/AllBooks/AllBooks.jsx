@@ -5,7 +5,7 @@ import Books from "../../components/Home/Books";
 const AllBooks = () => {
   return (
     <Container>
-      <div>
+      <div className="mb-10">
         <p className="font-bold text-center text-3xl">All Books</p>
         <Books></Books>
         </div>

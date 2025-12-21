@@ -1,7 +1,7 @@
 import { Link } from 'react-router'
 
 const Card = ({ book }) => {
-  const { _id, name, image, quantity, price, category } = book || {}
+  const { _id, name, image, quantity, price, author } = book || {}
   return (
     <Link
       to={`/book/${_id}`}
@@ -37,7 +37,7 @@ const Card = ({ book }) => {
           ></div>
         </div>
         <div className='font-semibold text-lg'>{name}</div>
-        <div className='font-semibold text-lg'>Category: {category}</div>
+        <div className='font-semibold text-lg'>Author: {author}</div>
         <div className='font-semibold text-lg'>Quantity: {quantity}</div>
         <div className='flex flex-row items-center gap-1'>
           <div className='font-semibold'> Price: {price}$</div>

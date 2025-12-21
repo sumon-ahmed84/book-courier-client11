@@ -24,7 +24,7 @@ const Navbar = () => {
     setTheme(checked ? "dark" : "light");
   };
   return (
-    <div className={`fixed  overflow-hidden w-full bg-white z-10 shadow-sm ${theme === 'dark' ? 'text-black' : ''}`}>
+    <div className={`fixed w-full bg-white z-10 shadow-sm ${theme === 'dark' ? 'text-black' : ''}`}>
       <div className=" ">
         <Container>
           <div className="flex flex-row  items-center justify-between gap-3 md:gap-0">

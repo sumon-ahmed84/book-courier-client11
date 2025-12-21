@@ -5,7 +5,7 @@ import { FaTrashCan } from "react-icons/fa6";
 
 const CustomerOrderDataRow = ({ order, refetch }) => {
   const axiosSecure = useAxiosSecure();
-  const { image, name, category, price, quantity, status } = order || {};
+  const { image, name, author, price, quantity, status } = order || {};
 
   const handleParcelDelete = (id) => {
     Swal.fire({
@@ -52,7 +52,7 @@ const CustomerOrderDataRow = ({ order, refetch }) => {
         <p className="text-gray-900">{name}</p>
       </td>
       <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-        <p className="text-gray-900">{category}</p>
+        <p className="text-gray-900">{author}</p>
       </td>
       <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
         <p className="text-gray-900">${price}</p>
